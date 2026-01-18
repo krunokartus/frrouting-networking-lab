@@ -1,4 +1,7 @@
-name: frrouting_networking_lab
+# Lab 01: Static Routing
+# Topology: PC1 --- R1 --- R2 --- PC2
+
+name: lab01_static_routing
 
 topology:
   nodes:
@@ -12,11 +15,15 @@ topology:
     pc1:
       kind: linux
       image: alpine:latest
-
+      
     pc2:
       kind: linux
       image: alpine:latest
 
   links:
-    - endpoints: ["router1:eth1", "pc1:eth1"]
-    - endpoints: ["router1:eth2", "pc2:eth1"]
+    # Link: PC1 to Router1
+    - endpoints: ["pc1:eth1", "router1:eth1"]
+    # Link: Router1 to Router2 (Backbone)
+    - endpoints: ["router1:eth2", "router2:eth1"]
+    # Link: Router2 to PC2
+    - endpoints: ["router2:eth2", "pc2:eth1"]

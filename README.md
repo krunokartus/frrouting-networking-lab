@@ -1,37 +1,40 @@
-# FRRouting Networking Lab Portfolio
+# FRROUTING NETWORKING LAB
+> Structured networking scenarios for CCNA and Linux Sysadmin practice using **FRRouting** and **Containerlab**.
 
-This repository contains a series of networking labs designed to practice CCNA-level concepts using **FRRouting (FRR)** and **Containerlab**.
+---
 
-## Portfolio Structure
+### Core Concepts
+*   **Layer 3:** IPv4 Subnetting, Gateway redundancy, Static Routing.
+*   **Dynamic Routing:** OSPFv2 (Single & Multi-area).
+*   **Network Security:** Access Control Lists (ACL) and Statefull NAT.
+*   **Infrastructure as Code:** Automated topology deployment with Containerlab.
 
-Each lab is self-contained in its own directory with the following structure:
-- `lab.clab.yml`: Topology definition.
-- `README.md`: Lab objectives, concepts, and verification steps.
-- `configs/`: Device configurations (e.g., `frr.conf`).
-- `scripts/`: Initialization or automation scripts.
-- `diagrams/`: Visual representation of the topology.
-- `screenshots/`: Proof of completion and troubleshooting.
+---
 
-## Labs
+### Lab Portfolio
 
-1.  **[Lab 01: Static Routing](./lab01-static-routing)** - Manual route configuration between two routers.
-2.  **[Lab 02: Default Gateway](./lab02-default-gateway)** - Understanding gateway concepts for end hosts.
-3.  **[Lab 03: Connected Routes](./lab03-connected-routes)** - How routers learn about directly attached networks.
-4.  **[Lab 04: NAT](./lab04-nat)** - Network Address Translation for internet access.
-5.  **[Lab 05: Static Routing + NAT](./lab05-static-routing+nat)** - Combining routing with address translation.
-6.  **[Lab 06: OSPF Simple](./lab06-ospf-simple)** - Basic dynamic routing with OSPFv2.
-7.  **[Lab 07: OSPF Multiple Areas](./lab07-ospf-multiple-areas)** - Scaling OSPF with areas.
-8.  **[Lab 08: Access Lists](./lab08-access-lists)** - Implementing security and traffic filtering.
-9.  **[Lab 09: OSPF + NAT](./lab09-ospf+nat)** - Complex dynamic routing and NAT integration.
-10. **[Lab 10: Troubleshooting](./lab10-troubleshooting)** - Advanced scenario for fixing broken connectivity.
+1.  **[Lab 01: Static Routing](./lab01-static-routing)** - Manual route configuration between multiple hops.
+2.  **[Lab 02: Default Gateway](./lab02-default-gateway)** - Understanding host-to-router connectivity.
+3.  **[Lab 03: Connected Routes](./lab03-connected-routes)** - Analysis of routing table population.
+4.  **[Lab 04: NAT](./lab04-nat)** - Network Address Translation for edge connectivity.
+5.  **[Lab 05: Static Routing + NAT](./lab05-static-routing+nat)** - Combining manual routing with address translation.
+6.  **[Lab 06: OSPF Simple](./lab06-ospf-simple)** - Basic dynamic routing setup.
+7.  **[Lab 07: OSPF Multiple Areas](./lab07-ospf-multiple-areas)** - Scaling networks with OSPF areas.
+8.  **[Lab 08: Access Lists](./lab08-access-lists)** - Traffic filtering and security basics.
+9.  **[Lab 09: OSPF + NAT](./lab09-ospf+nat)** - Complex integration of dynamic routing and NAT.
+10. **[Lab 10: Troubleshooting](./lab10-troubleshooting)** - Identifying and fixing connectivity issues in a broken lab.
 
-## Prerequisites
-- [Containerlab](https://containerlab.dev/)
-- [Docker](https://www.docker.com/) or [Podman](https://podman.io/)
-- [FRR Image](https://hub.docker.com/r/frrouting/frr)
+---
 
-## How to run
-Navigate to a lab directory and run:
-```bash
-sudo containerlab deploy -t lab.clab.yml
-```
+### Workflow
+Each lab directory contains:
+- `lab.clab.yml`: Topology definition (Nodes, Links, Images).
+- `README.md`: Objectives, concepts, and verification steps.
+- `configs/`: FRR configuration files (`frr.conf`).
+- `diagrams/`: Visual representation of the network.
+
+### Prerequisites
+- [Containerlab](https://containerlab.dev/) installed on a Linux host (Docker or Podman runtime).
+
+---
+*Created for CCNA and Linux Junior portfolio building.*

@@ -1,0 +1,17 @@
+# Containerlab artifacts
+clab-*/
+.clab.yml.bak
+ansible-inventory.yml
+
+# Logs and transient data
+*.log
+*.pcap
+*.vlog
+
+# OS and IDE generated files
+.DS_Store
+.vscode/
+.idea/
+.ssh/
+*~
+*.swp
