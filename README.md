@@ -35,6 +35,3 @@ Each lab directory contains:
 
 ### Prerequisites
 - [Containerlab](https://containerlab.dev/) installed on a Linux host (Docker or Podman runtime).
-
----
-*Created for CCNA and Linux Junior portfolio building.*
