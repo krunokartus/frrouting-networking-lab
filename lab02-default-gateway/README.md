@@ -34,3 +34,13 @@ On the screenshot above, I performed the following verification steps on **PC1**
 2. **Connectivity to remote network:** my successful ping to `192.168.20.10` (PC2) proves that the traffic is correctly reaching the other subnet through the default gateway.
 3. **Routing table inspection:** my `ip route` command shows that the `default via 192.168.10.1 dev eth1` route is properly installed, directing all non-local traffic to the router.
 4. **Traffic capture:** my `tcpdump` output shows incoming ICMP echo requests from `192.168.20.10` (PC2) and outgoing echo replies from **PC1**, confirming successful end-to-end communication.
+
+### Lab overview
+
+Here we see how Podman is used as a runtime for Containerlab:
+
+![Containerlab runtime](./images/containerlab-podman-network.jpg)
+
+1. **Topology status:** the `containerlab inspect` command confirms that all three nodes (pc1, pc2, and router1) are running and have their management IPv4/IPv6 addresses assigned.
+2. **Container runtime:** the `podman ps` command shows the actual containers that Podman manages, matching the topology nodes.
+3. **Internal networking:** the `ip a` output reveals the `podman3` bridge interface and its virtual ethernet (veth) pairs. This shows how my host operating system bridges the traffic between the containers in this lab environment.

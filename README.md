@@ -33,7 +33,7 @@ Each lab directory contains:
 - `configs/`: FRR configuration files (`frr.conf`).
 - `diagrams/`: visual representation of the network.
 
-### Prerequisites and Setup
+### Prerequisites and setup
 
 Before running any lab, ensure you have **Containerlab** and a container runtime installed. Containerlab orchestrates the networking nodes, but it depends on a runtime to manage the actual containers.
 
@@ -84,3 +84,6 @@ After installation completes, you can verify the installation by running:
 containerlab --version
 ```
 ![Containerlab version](./images/containerlab-version.jpg)
+
+Here we see how Podman is used as a runtime for Containerlab:
+![Containerlab runtime](./images/containerlab-podman-network.jpg)
