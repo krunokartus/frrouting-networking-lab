@@ -5,7 +5,7 @@
 
 ### Core Concepts
 *   **Layer 3:** IPv4 Subnetting, Gateway redundancy, Static Routing.
-*   **Dynamic Routing:** OSPFv2 (Single & Multi-area).
+*   **Dynamic Routing:** OSPFv2 (Single and Multi-area).
 *   **Network Security:** Access Control Lists (ACL) and Statefull NAT.
 *   **Infrastructure as Code:** Automated topology deployment with Containerlab.
 
@@ -33,5 +33,38 @@ Each lab directory contains:
 - `configs/`: FRR configuration files (`frr.conf`).
 - `diagrams/`: Visual representation of the network.
 
-### Prerequisites
-- [Containerlab](https://containerlab.dev/) installed on a Linux host (Docker or Podman runtime).
+### Prerequisites and Setup
+
+Before running any lab, ensure you have **Containerlab** and a container runtime installed. Containerlab orchestrates the networking nodes, but it depends on a runtime to manage the actual containers.
+
+#### 1. Install Container Runtime
+You can use either Docker or Podman. Docker is the standard and most tested choice for these labs.
+
+**Docker Installation (Recommended)**
+1. Run the official installation script:
+   ```bash
+   curl -fsSL https://get.docker.com -o get-docker.sh
+   sudo sh get-docker.sh
+   ```
+2. Enable and start the service:
+   ```bash
+   sudo systemctl enable --now docker
+   ```
+
+**Podman Installation (Alternative)**
+If you prefer Podman, install it via your package manager:
+```bash
+sudo apt update
+sudo apt install podman -y
+```
+
+#### 2. Install Containerlab
+After installing the runtime, install Containerlab:
+```bash
+curl -sL https://containerlab.dev/setup | sudo bash -s installer
+```
+
+#### 3. System Requirements and Dependencies
+- **Linux kernel:** Requires a modern Linux kernel with support for namespaces, cgroups, and veth pairs (standard in most distributions like Ubuntu or Debian).
+- **Network Tools:** Some labs may require `bridge-utils` or `iproute2` on the host, though most tools are contained within the lab nodes.
+- **Permissions:** Commands for deploying topologies usually require `sudo` privileges.
