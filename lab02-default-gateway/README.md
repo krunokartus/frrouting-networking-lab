@@ -1,7 +1,7 @@
 # Lab 02: default gateway
 
 ## Goal
-This lab shows how to configure and verify a default gateway on a host and how it communicates with devices outside its local IP subnet.
+This lab shows how to configure and verify a default gateway on a host and how it communicates with devices outside its local IP subnet. It also demonstrates Containerlab's ability to automatically configure IP addresses and gateways on the nodes. All very fast and possible on one PC, VM or laptop.
 
 ## Topology
 **PC1** -- **eth1-Router1-eth2** -- **PC2**
