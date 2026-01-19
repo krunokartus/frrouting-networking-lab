@@ -17,7 +17,7 @@ To get a better visual overview, Containerlab can generate a dynamic topology di
 sudo containerlab graph -t lab.clab.yml
 ```
 
-![Lab 03 Topology](diagrams/lab03_connected_routes_top.jpg)
+![Lab 03 Topology](diagrams/lab03_connected_routes_topol.jpg)
 
 The diagram shows **Router1** as the central node connecting **PC1**, **PC2**, and **PC3**, which helps in visualizing the three distinct subnets I'm working with.
 
