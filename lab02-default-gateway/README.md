@@ -4,8 +4,7 @@
 This lab shows how to configure and verify how a host uses a default gateway to communicate with devices outside its local IP subnet.
 
 ## Topology
-![Lab 02 topology](./diagrams/lab02_topology.png)
-*(note: diagram to be added)*
+**PC1** -- **eth1-Router1-eth2** -- **PC2**
 
 ## Concepts
 - local vs remote network communication
