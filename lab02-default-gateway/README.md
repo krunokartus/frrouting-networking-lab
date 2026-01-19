@@ -39,7 +39,7 @@ On the screenshot above, I performed the following verification steps on **PC1**
 
 Here we see how Podman is used as a runtime for Containerlab:
 
-![Containerlab runtime](./images/containerlab-podman-network.jpg)
+![Containerlab runtime](./screenshots/containerlab-podman-network.jpg)
 
 1. **Topology status:** the `containerlab inspect` command confirms that all three nodes (pc1, pc2, and router1) are running and have their management IPv4/IPv6 addresses assigned.
 2. **Container runtime:** the `podman ps` command shows the actual containers that Podman manages, matching the topology nodes.

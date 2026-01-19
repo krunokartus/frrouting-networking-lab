@@ -83,7 +83,3 @@ After installation completes, you can verify the installation by running:
 ```bash
 containerlab --version
 ```
-![Containerlab version](./images/containerlab-version.jpg)
-
-Here we see how Podman is used as a runtime for Containerlab:
-![Containerlab runtime](./images/containerlab-podman-network.jpg)
