@@ -83,4 +83,4 @@ After installation completes, you can verify the installation by running:
 ```bash
 containerlab --version
 ```
-![Containerlab version](./images/containerlab-version.png)
+![Containerlab version](./images/containerlab-version.jpg)
