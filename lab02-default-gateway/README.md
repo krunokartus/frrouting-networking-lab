@@ -1,7 +1,7 @@
 # Lab 02: default gateway
 
 ## Goal
-This lab shows how to configure and verify how a host uses a default gateway to communicate with devices outside its local IP subnet.
+This lab shows how to configure and verify a default gateway on a host and how it communicates with devices outside its local IP subnet.
 
 ## Topology
 **PC1** -- **eth1-Router1-eth2** -- **PC2**
