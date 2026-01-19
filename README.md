@@ -52,9 +52,16 @@ You can use either Docker or Podman. Docker is the standard and most tested choi
    ```
 
 **Podman installation (alternative)**
+- On Debian/Ubuntu:
 ```bash
 sudo apt update
 sudo apt-get -y install podman
+sudo systemctl enable --now podman
+```
+
+- On Redhat/Fedora:
+```bash
+sudo dnf install -y podman
 sudo systemctl enable --now podman
 ```
 
@@ -64,7 +71,7 @@ After installing the runtime, install Containerlab:
 curl -sL https://containerlab.dev/setup | sudo bash -s installer
 ```
 
-> **Podman users:**
+> **For Podman users:**
 > When using Podman, you must specify the runtime with the `--runtime` flag for Containerlab commands:
 > ```bash
 > sudo containerlab deploy --runtime podman -t <lab.clab.yml>
