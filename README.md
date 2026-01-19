@@ -38,9 +38,9 @@ Each lab directory contains:
 Before running any lab, ensure you have **Containerlab** and a container runtime installed. Containerlab orchestrates the networking nodes, but it depends on a runtime to manage the actual containers.
 
 #### 1. Install container runtime
-You can use either Docker or Podman. Docker is the standard and most tested choice for these labs.
+You can use either Docker or Podman. Docker is the standard and most tested choice for Containerlab. However, I use Podman on Fedora Linux distro, so the installation looks a bit different in my case. Here are both options.
 
-**Docker installation (recommended)**
+**Docker installation**
 1. Run the official installation script:
    ```bash
    curl -fsSL https://get.docker.com -o get-docker.sh
@@ -52,19 +52,35 @@ You can use either Docker or Podman. Docker is the standard and most tested choi
    ```
 
 **Podman installation (alternative)**
-If you prefer Podman, install it via your package manager:
 ```bash
 sudo apt update
-sudo apt install podman -y
+sudo apt-get -y install podman
+sudo systemctl enable --now podman
 ```
 
-#### 2. Install Containerlab
+2. Install Containerlab
 After installing the runtime, install Containerlab:
 ```bash
 curl -sL https://containerlab.dev/setup | sudo bash -s installer
+```
+
+When starting Containerlab with Podman, we need to use the `--runtime` flag:
+```bash
+sudo containerlab deploy --runtime podman <lab.clab.yml>
+'''
+
+Same may be with other Containerlab commands, we need to use the `--runtime` flag:
+```bash
+sudo containerlab destroy --runtime podman <lab.clab.yml>
 ```
 
 #### 3. System requirements and dependencies
 - **Linux kernel:** Requires a modern Linux kernel with support for namespaces, cgroups, and veth pairs (standard in most distributions like Ubuntu or Debian).
 - **Network tools:** Some labs may require `bridge-utils` or `iproute2` on the host, though most tools are contained within the lab nodes.
 - **Permissions:** Commands for deploying topologies usually require `sudo` privileges.
+
+After installation completes, you can verify the installation by running:
+```bash
+containerlab --version
+```
+![Containerlab version](./images/containerlab-version.png)
