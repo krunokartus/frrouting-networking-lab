@@ -1,5 +1,5 @@
-# Lab 01: Static Routing
-# Topology: PC1 --- R1 --- R2 --- PC2
+# lab 01: static routing
+# topology: PC1 --- R1 --- R2 --- PC2
 
 name: lab01_static_routing
 
@@ -21,9 +21,9 @@ topology:
       image: alpine:latest
 
   links:
-    # Link: PC1 to Router1
+    # link: PC1 to router1
     - endpoints: ["pc1:eth1", "router1:eth1"]
-    # Link: Router1 to Router2 (Backbone)
+    # link: router1 to router2 (backbone)
     - endpoints: ["router1:eth2", "router2:eth1"]
-    # Link: Router2 to PC2
+    # link: router2 to PC2
     - endpoints: ["router2:eth2", "pc2:eth1"]

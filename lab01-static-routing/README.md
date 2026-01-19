@@ -1,18 +1,18 @@
-# Lab 01: Static Routing
+# Lab 01: static routing
 
 ## Goal
 Establish connectivity between two hosts (PC1 and PC2) separated by two routers using manual static routes.
 
 ## Topology
-![Lab 01 Topology](./diagrams/lab01_topology.png)
+![Lab 01 topology](./diagrams/lab01_topology.png)
 
 ## Concepts
-- IP Addressing (Subnetting /30 for point-to-point)
-- Static Routes (`ip route`)
-- IP Forwarding in Linux
-- Connectivity verification (ping, traceroute)
+- IP addressing (subnetting /30 for point-to-point)
+- static routes (`ip route`)
+- IP forwarding in Linux
+- connectivity verification (ping, traceroute)
 
-## IP Plan
+## IP plan
 | Node | Interface | IP Address |
 | :--- | :--- | :--- |
 | **PC1** | eth1 | 192.168.10.10/24 (GW: 192.168.10.1) |

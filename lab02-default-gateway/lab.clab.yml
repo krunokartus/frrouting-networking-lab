@@ -1,0 +1,31 @@
+# lab 02: default gateway
+# topology: PC1 --- router1 --- PC2
+
+name: lab02_default_gateway
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/router1/frr.conf:/etc/frr/frr.conf
+        - configs/router1/daemons:/etc/frr/daemons
+
+    pc1:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - ip addr add 192.168.10.10/24 dev eth1
+        - ip route add default via 192.168.10.1
+
+    pc2:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - ip addr add 192.168.20.10/24 dev eth1
+        - ip route add default via 192.168.20.1
+
+  links:
+    - endpoints: ["pc1:eth1", "router1:eth1"]
+    - endpoints: ["pc2:eth1", "router1:eth2"]
