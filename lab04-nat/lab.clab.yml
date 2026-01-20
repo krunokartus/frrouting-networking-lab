@@ -1,0 +1,36 @@
+# lab 04: NAT (Network Address Translation)
+# topology: PC-Internal --- Router1 --- PC-Internet (External)
+
+name: lab04_nat
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/router1/frr.conf:/etc/frr/frr.conf
+        - configs/router1/daemons:/etc/frr/daemons
+        - configs/router1/vtysh.conf:/etc/frr/vtysh.conf
+      exec:
+        # Enable IP forwarding and set up NAT
+        - sysctl -w net.ipv4.ip_forward=1
+        - iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE
+      
+    pc_internal:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - ip addr add 192.168.1.10/24 dev eth1
+        - ip route add default via 192.168.1.1
+      
+    pc_internet:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - ip addr add 203.0.113.10/24 dev eth1
+        - ip route add default via 203.0.113.1
+
+  links:
+    - endpoints: ["pc_internal:eth1", "router1:eth1"]
+    - endpoints: ["router1:eth2", "pc_internet:eth1"]
