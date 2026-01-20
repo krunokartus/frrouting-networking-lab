@@ -27,13 +27,6 @@ iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE
 ```
 This command tells the router to replace the source IP of any packet leaving through `eth2` (the 'internet' side) with the IP of `eth2` itself.
 
-### Why Linux commands instead of FRR?
-Since I'm using FRRouting on a Linux base, it's important to understand the split of responsibilities:
-- **`sysctl -w net.ipv4.ip_forward=1`**: This is a "switch" in the Linux kernel. Without this, Linux acts like a normal PC and drops packets not meant for it. Enabling this makes the kernel behave like a router, forwarding packets between interfaces.
-- **`iptables -t nat ...`**: FRR manages the routing table but doesn't handle NAT natively yet. I use the built-in Linux firewall (**Netfilter/iptables**) to intercept packets leaving the kernel and translate their IP addresses.
-
-**Comparison with Enterprise (e.g., Cisco):**
-In hardware routers, these functions are integrated. On a Cisco router, I would use `ip nat inside source list...` directly in the router CLI. In a Linux/FRR environment, FRR handles the "where to send" (Control Plane), while the Linux Kernel handles the "how to forward and translate" (Data Plane).
 
 ## Verification
 1. **Connectivity test:** From **PC-Internal**, ping the external server: `ping 203.0.113.10`
@@ -50,6 +43,7 @@ PING 203.0.113.10 (203.0.113.10): 56 data bytes
 64 bytes from 203.0.113.10: seq=0 ttl=63 time=0.063 ms
 64 bytes from 203.0.113.10: seq=1 ttl=63 time=0.050 ms
 ```
+![Connectivity test](screenshots/ping-pc-1.jpg)
 
 **Traffic capture on PC-Internet:**
 ```bash
@@ -57,9 +51,32 @@ PING 203.0.113.10 (203.0.113.10): 56 data bytes
 08:17:17.733225 IP 203.0.113.1 > 203.0.113.10: ICMP echo request, id 10, seq 0, length 64
 08:17:18.733361 IP 203.0.113.1 > 203.0.113.10: ICMP echo request, id 10, seq 1, length 64
 ```
+
+![NAT Verification](screenshots/tcpdump-pc-internet.jpg)
+
 As shown above, the `tcpdump` output proves that the packets arriving at the destination have the source IP **203.0.113.1** (the router), even though they originated from the internal network. This confirms the MASQUERADE rule is active.
 
-This is an Alpine linux container, so before running tcpdump command, we need to install it first:
+Since this is an Alpine linux container, before running tcpdump command, we need to install it first:
 ```bash
 / # apk add tcpdump
+```
+
+---
+
+### Notes
+
+#### Why Linux commands instead of FRR?
+Since I'm using FRRouting on a Linux base, it's important to understand the split of responsibilities:
+- **`sysctl -w net.ipv4.ip_forward=1`**: This is a "switch" in the Linux kernel. Without this, Linux acts like a normal PC and drops packets not meant for it. Enabling this makes the kernel behave like a router, forwarding packets between interfaces.
+- **`iptables -t nat ...`**: FRR manages the routing table but doesn't handle NAT natively yet. I use the built-in Linux firewall (**Netfilter/iptables**) to intercept packets leaving the kernel and translate their IP addresses.
+
+**Comparison with Enterprise (e.g., Cisco):**
+In hardware routers, these functions are integrated. On a Cisco router, I would use `ip nat inside source list...` directly in the router CLI. In a Linux/FRR environment, FRR handles the "where to send" (Control Plane), while the Linux Kernel handles the "how to forward and translate" (Data Plane).
+
+#### Persistence
+The `sysctl -w` command only changes the setting for the current session. To enable persistence on distributions like Fedora/CentOS, create a custom configuration file:
+
+```bash
+echo "net.ipv4.ip_forward=1" | sudo tee /etc/sysctl.d/99-routing.conf
+sudo sysctl -p /etc/sysctl.d/99-routing.conf
 ```
