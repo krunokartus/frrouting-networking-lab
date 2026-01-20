@@ -70,7 +70,7 @@ Since this lab uses FRRouting on a Linux base, it's important to understand the 
 - **`sysctl -w net.ipv4.ip_forward=1`**: This is a "switch" in the Linux kernel. Without this, Linux acts like a normal PC and drops packets not meant for it. Enabling this makes the kernel behave like a router, forwarding packets between interfaces.
 - **`iptables -t nat ...`**: FRR manages the routing table but doesn't handle NAT natively yet. I use the built-in Linux firewall (**Netfilter/iptables**) to intercept packets leaving the kernel and translate their IP addresses.
 
-**Comparison with Enterprise (e.g., Cisco):**
+**Comparison with enterprise routers (e.g., Cisco):**
 In hardware routers, these functions are integrated. On a Cisco router, I would use `ip nat inside source list...` directly in the router CLI. In a Linux/FRR environment, FRR handles the "where to send" (Control plane), while the Linux Kernel handles the "how to forward and translate" (Data plane).
 
 #### Persistence
