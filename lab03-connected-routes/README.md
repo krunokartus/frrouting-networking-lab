@@ -30,8 +30,8 @@ The diagram shows **Router1** as the central node connecting **PC1**, **PC2**, a
 | **PC3** | eth1 | 192.168.30.10/24 | 192.168.30.1 |
 
 ## Verification
-1. **Routing table inspection:** on **Router1**, I use 'vtysh` to enter the router CLI and then 'show ip route' to see the connected routes.
-2. **Connectivity tests:** From **PC1**, let's ping both **PC2** and **PC3**. Containerlab has automatically configured the IP addresses and gateways on the PCs during deployment.
+1. **Routing table inspection:** on **Router1**, `vtysh` is used to enter the router CLI and then `show ip route` to see the connected routes.
+2. **Connectivity tests:** From **PC1**, ping both **PC2** and **PC3**. Containerlab has automatically configured the IP addresses and gateways on the PCs during deployment.
    - `ping 192.168.20.10`
    - `ping 192.168.30.10`
 
