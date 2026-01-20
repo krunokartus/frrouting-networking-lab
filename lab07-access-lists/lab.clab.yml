@@ -1,0 +1,36 @@
+# lab 07: Access Control Lists (ACL)
+# topology: PC1 --- Router1 --- PC2
+
+name: lab07_access_lists
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/router1/frr.conf:/etc/frr/frr.conf
+        - configs/router1/daemons:/etc/frr/daemons
+        - configs/router1/vtysh.conf:/etc/frr/vtysh.conf
+      exec:
+        - sysctl -w net.ipv4.ip_forward=1
+        # Example: Block ICMP from PC1 to PC2
+        # - iptables -A FORWARD -s 192.168.10.10 -d 192.168.20.10 -p icmp -j REJECT
+      
+    pc1:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - ip addr add 192.168.10.10/24 dev eth1
+        - ip route add default via 192.168.10.1
+      
+    pc2:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - ip addr add 192.168.20.10/24 dev eth1
+        - ip route add default via 192.168.20.1
+
+  links:
+    - endpoints: ["pc1:eth1", "router1:eth1"]
+    - endpoints: ["router1:eth2", "pc2:eth1"]
