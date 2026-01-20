@@ -66,12 +66,12 @@ Since this is an Alpine linux container, before running tcpdump command, we need
 ### Notes
 
 #### Why Linux commands instead of FRR?
-Since I'm using FRRouting on a Linux base, it's important to understand the split of responsibilities:
+Since this lab uses FRRouting on a Linux base, it's important to understand the split of responsibilities:
 - **`sysctl -w net.ipv4.ip_forward=1`**: This is a "switch" in the Linux kernel. Without this, Linux acts like a normal PC and drops packets not meant for it. Enabling this makes the kernel behave like a router, forwarding packets between interfaces.
 - **`iptables -t nat ...`**: FRR manages the routing table but doesn't handle NAT natively yet. I use the built-in Linux firewall (**Netfilter/iptables**) to intercept packets leaving the kernel and translate their IP addresses.
 
 **Comparison with Enterprise (e.g., Cisco):**
-In hardware routers, these functions are integrated. On a Cisco router, I would use `ip nat inside source list...` directly in the router CLI. In a Linux/FRR environment, FRR handles the "where to send" (Control Plane), while the Linux Kernel handles the "how to forward and translate" (Data Plane).
+In hardware routers, these functions are integrated. On a Cisco router, I would use `ip nat inside source list...` directly in the router CLI. In a Linux/FRR environment, FRR handles the "where to send" (Control plane), while the Linux Kernel handles the "how to forward and translate" (Data plane).
 
 #### Persistence
 The `sysctl -w` command only changes the setting for the current session. To enable persistence on distributions like Fedora/CentOS, create a custom configuration file:
