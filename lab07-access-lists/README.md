@@ -38,25 +38,25 @@ iptables -A FORWARD -s 192.168.10.10 -d 192.168.20.10 -p icmp -j REJECT
 ## Verification results
 
 ### 1. Lab Deployment
-I started the lab using Containerlab. The deployment was successful, and all nodes were created correctly.
+Start the lab using `sudo containerlab command`. The deployment was successful, and all nodes were created correctly.
 
 ![Containerlab Deployment](screenshots/clab_deploy.jpg)
 
-I also verified that all containers are running using `podman ps`:
+Then verification that all containers are running using `podman ps`:
 
 ![Podman PS](screenshots/podman_ps.jpg)
 
 ### 2. Initial Connectivity Check
-Before applying any firewall rules, I verified that **PC1** could successfully ping **PC2**. This confirms that routing is working correctly.
+Before applying any firewall rules, verify **PC1** could successfully ping **PC2**. This confirms that routing is working correctly.
 
 ![Initial Ping PC1 to PC2](screenshots/pc1_ping.jpg)
 
 ### 3. Applying and Verifying ACL (iptables)
-After applying the `iptables` rule on **Router1** to block ICMP traffic from **PC1** to **PC2**, I attempted to ping again. As expected, the traffic was rejected.
+After applying the `iptables` rule on **Router1** to block ICMP traffic from **PC1** to **PC2**, the traffic should be rejected. That is happening:
 
 ![Failed Ping after ACL](screenshots/pc1_ping_no.jpg)
 
 ### 4. Inspecting Firewall Rules
-Finally, I checked the active rules on **Router1** to confirm the rule was correctly added to the `FORWARD` chain.
+Finally, checking the active rules on **Router1** to confirm the rule was correctly added to the `FORWARD` chain.
 
 ![Router1 iptables rules](screenshots/router1_iptables.jpg)
