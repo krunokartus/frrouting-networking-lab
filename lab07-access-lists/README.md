@@ -29,9 +29,6 @@ To block only ping traffic from PC1 to PC2:
 iptables -A FORWARD -s 192.168.10.10 -d 192.168.20.10 -p icmp -j REJECT
 ```
 
-### Task 2: Allow all other traffic
-By default, if there are no other rules, traffic is forwarded. To verify, we could try to connect via another protocol if a service was running.
-
 ## Verification
 1. **Initial test:** Verify that PC1 can ping PC2 *before* applying the rule.
 2. **Apply filter:** Run the `iptables` command on **Router1**.
@@ -39,4 +36,27 @@ By default, if there are no other rules, traffic is forwarded. To verify, we cou
 4. **Inspect rules:** On **Router1**, check the active filter table: `iptables -L -v -n`
 
 ## Verification results
-*(Screenshots and logs will be added after running the lab)*
+
+### 1. Lab Deployment
+I started the lab using Containerlab. The deployment was successful, and all nodes were created correctly.
+
+![Containerlab Deployment](screenshots/clab_deploy.jpg)
+
+I also verified that all containers are running using `podman ps`:
+
+![Podman PS](screenshots/podman_ps.jpg)
+
+### 2. Initial Connectivity Check
+Before applying any firewall rules, I verified that **PC1** could successfully ping **PC2**. This confirms that routing is working correctly.
+
+![Initial Ping PC1 to PC2](screenshots/pc1_ping.jpg)
+
+### 3. Applying and Verifying ACL (iptables)
+After applying the `iptables` rule on **Router1** to block ICMP traffic from **PC1** to **PC2**, I attempted to ping again. As expected, the traffic was rejected.
+
+![Failed Ping after ACL](screenshots/pc1_ping_no.jpg)
+
+### 4. Inspecting Firewall Rules
+Finally, I checked the active rules on **Router1** to confirm the rule was correctly added to the `FORWARD` chain.
+
+![Router1 iptables rules](screenshots/router1_iptables.jpg)

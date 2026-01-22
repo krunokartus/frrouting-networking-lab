@@ -30,10 +30,10 @@ The goal of this lab is to configure and understand **OSPFv2 (Open Shortest Path
 4. **Database Check:** View the OSPF link-state database: `show ip ospf database`
 
 ## Verification results
-After deploying the lab, I verified the OSPF adjacency and routing information on **Router1**.
+After deploying the lab, let's verify the OSPF adjacency and routing information on **Router1**.
 
 **1. OSPF Neighbor status:**
-I checked if the routers successfully formed an adjacency. The state **Full/DR** confirms that the synchronization is complete.
+Then check if the routers successfully formed an adjacency. The state **Full/DR** confirms that the synchronization is complete.
 ![OSPF Neighbors](screenshots/ospf-neighbor.png)
 
 ```bash
