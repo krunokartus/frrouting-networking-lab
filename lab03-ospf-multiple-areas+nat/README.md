@@ -57,4 +57,4 @@ A final traceroute from **PC2** to **PC1** confirms that traffic is successfully
 - `show ip ospf`: **OSPF health record**. General information about who you are in the OSPF world (Router ID) and which areas you are serving.
 
 ## Clab cleanup
-Running script `./scripts/destroy.sh` will remove the lab.
+Running script `./scripts/destroying.sh` will remove the lab.

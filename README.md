@@ -49,17 +49,16 @@ sudo systemctl enable --now docker
 ```
 
 **Podman installation (alternative)**
-*   **On Debian/Ubuntu:**
-    ```bash
-    sudo apt update
-    sudo apt-get -y install podman
-    sudo systemctl enable --now podman
-    ```
-*   **On Redhat/Fedora:**
-    ```bash
-    sudo dnf install -y podman
-    sudo systemctl enable --now podman
-    ```
+```bash
+# On Debian/Ubuntu:
+sudo apt update
+sudo apt-get -y install podman
+sudo systemctl enable --now podman
+
+# On Redhat/Fedora:
+sudo dnf install -y podman
+sudo systemctl enable --now podman
+```
 
 #### 2. Install Containerlab
 After installing the runtime, install **Containerlab**:
