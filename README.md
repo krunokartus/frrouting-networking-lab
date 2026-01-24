@@ -14,7 +14,7 @@
 ### Lab Portfolio
 1.  **[Lab 01: static routing](./lab01-static-routing)** - Manual route configuration between multiple hops.
 2.  **[Lab 02: connected routes](./lab02-connected-routes)** - Analysis of routing table population and basic IP forwarding.
-3.  **[Lab 03: OSPF multiple areas]()./lab03-ospf-multiple-areas)** - Scaling networks with OSPF areas.
+3.  **[Lab 03: OSPF multiple areas](./lab03-ospf-multiple-areas)** - Scaling networks with OSPF areas.
 
 ---
 
