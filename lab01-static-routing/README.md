@@ -29,7 +29,7 @@ Establish connectivity between two hosts (PC1 and PC2) separated by two routers 
    ```
    This script deploys the topology and shows the status of the containers.
    
-   ![Starting and checking containers](./screenshots/starting-clab-check-containers.png)
+   ![Starting and checking containers](./screenshots/sclab-podman-verify.png)
 
 ## Verification
 
@@ -49,13 +49,13 @@ show ip route
 ```
 ![Router 1 static routes](./screenshots/route-router1.png)
 
-### 3. Trace path from PC1
+### 3. Trace path from PC2
 From the other side we can use `traceroute` to confirm that packets are traversing both routers.
 ```bash
-# pc1
-traceroute 192.168.20.10
+# pc2
+traceroute 192.168.10.10
 ```
-![Traceroute from PC1](./screenshots/traceroute-pc2.png)
+![Traceroute from PC2](./screenshots/traceroute-pc2.png)
 
 ## Destroying the lab
 **Running second script**:
