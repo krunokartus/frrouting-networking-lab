@@ -24,6 +24,8 @@ Each lab directory contains:
 *   `README.md`: Objectives, concepts, and verification steps.
 *   `configs/`: FRR configuration files (`frr.conf`).
 *   `diagrams/`: Visual representation of the network.
+*   `scripts/`: Simple bash scripts to automate the deployment and cleanup of the lab.
+*   `screenshots/`: Screenshots of the commands and outputs.
 
 ---
 
