@@ -32,7 +32,7 @@ Before running any lab, ensure you have **Containerlab** and a container runtime
 
 Watch this video to get familiar with Containerlab and see how it simplifies network labs:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XdshvUqysRc?si=UMO_T-xfk0sAuOol" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![Containerlab Quick Overview - Networklessons.com](https://img.youtube.com/vi/XdshvUqysRc/0.jpg)](https://www.youtube.com/watch?v=XdshvUqysRc)
 
 #### 1. Install container runtime
 You can use either Docker or Podman. Docker is the standard and most tested choice for Containerlab. However, I use Podman on Fedora Linux distro, so the installation looks a bit different in my case. Here are both options.
