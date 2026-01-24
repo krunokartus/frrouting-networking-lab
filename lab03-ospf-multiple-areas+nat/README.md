@@ -1,4 +1,4 @@
-# Lab 06: OSPF Multiple Areas
+# Lab 03: OSPF Multiple Areas + NAT
 
 ## Goal
 The goal of this lab is to configure **Multi-area OSPFv2**. It demonstrates how OSPF uses areas to scale networks, specifically focusing on the role of an **Area Border Router (ABR)** that connects the backbone (Area 0) with a non-backbone area (Area 1).

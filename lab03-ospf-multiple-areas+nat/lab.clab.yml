@@ -1,7 +1,7 @@
-# lab 05: OSPF simple
-# topology: PC1 --- R1 --- R2 --- PC2
+# lab 03: OSPF multiple areas + NAT
+# topology: PC1 --- R1 (Area 0) --- R2 (ABR) --- R3 (Area 1) --- PC2
 
-name: lab05_ospf_simple
+name: lab03_ospf_multiple_areas_nat
 
 topology:
   nodes:
@@ -20,6 +20,14 @@ topology:
         - configs/router2/frr.conf:/etc/frr/frr.conf
         - configs/router2/daemons:/etc/frr/daemons
         - configs/router2/vtysh.conf:/etc/frr/vtysh.conf
+
+    router3:
+      kind: linux
+      image: frrouting/frr:latest
+      binds:
+        - configs/router3/frr.conf:/etc/frr/frr.conf
+        - configs/router3/daemons:/etc/frr/daemons
+        - configs/router3/vtysh.conf:/etc/frr/vtysh.conf
       
     pc1:
       kind: linux
@@ -38,4 +46,5 @@ topology:
   links:
     - endpoints: ["pc1:eth1", "router1:eth1"]
     - endpoints: ["router1:eth2", "router2:eth1"]
-    - endpoints: ["router2:eth2", "pc2:eth1"]
+    - endpoints: ["router2:eth2", "router3:eth1"]
+    - endpoints: ["router3:eth2", "pc2:eth1"]

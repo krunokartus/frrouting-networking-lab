@@ -14,14 +14,8 @@
 ### Lab Portfolio
 
 1.  **[Lab 01: static routing](./lab01-static-routing)** - manual route configuration between multiple hops.
-2.  **[Lab 02: default gateway](./lab02-default-gateway)** - understanding host-to-router connectivity.
-3.  **[Lab 03: connected routes](./lab03-connected-routes)** - analysis of routing table population.
-4.  **[Lab 04: NAT](./lab04-nat)** - network address translation for edge connectivity.
-5.  **[Lab 05: OSPF simple](./lab05-ospf-simple)** - basic dynamic routing setup.
-6.  **[Lab 06: OSPF multiple areas](./lab06-ospf-multiple-areas)** - scaling networks with OSPF areas.
-7.  **[Lab 07: access lists](./lab07-access-lists)** - traffic filtering and security basics.
-8.  **[Lab 08: OSPF + NAT](./lab08-ospf+nat)** - complex integration of dynamic routing and NAT.
-9.  **[Lab 09: troubleshooting](./lab09-troubleshooting)** - identifying and fixing connectivity issues in a broken lab.
+2.  **[Lab 02: connected routes](./lab02-connected-routes)** - analysis of routing table population and basic IP forwarding.
+3.  **[Lab 03: OSPF multiple areas + NAT](./lab03-ospf-multiple-areas+nat)** - scaling networks with OSPF areas and implementing NAT for edge connectivity.
 
 ---
 
